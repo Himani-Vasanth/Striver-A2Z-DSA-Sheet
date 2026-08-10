@@ -65,8 +65,39 @@ int y(3.5);     // Allowed (y becomes 3)
 int z{3.5};     // Error: narrowing conversion
 */
 
-int a;
+     arr[5] = {10, 20, 30, 40, 50};
 
-cout << "Enter int a: "; cin >> a;
-cout << "a = " << a ;
+    cout << arr[0] << endl;
+    cout << arr[2] << endl;
+
+    for(int i = 0; i < 5; i++)
+        cout << arr[i] << " ";
+
+    cout << endl;
+
+    string s = "Hello";
+
+    cout << s[0] << endl;
+    cout << s[2] << endl;
+
+    cout << s.length() << endl;
+
+    for(int i = 0; i < s.length(); i++)
+        cout << s[i] << " ";
+
+    cout << endl;
+
+    string s1 = "hello";
+    string s2 = "hello";
+
+    if(s1 == s2)
+        cout << "Equal" << endl;
+    else
+        cout << "Not Equal" << endl;
+
+    string s3 = s1;
+    s3[0] = 'H';
+
+    cout << s1 << endl;
+    cout << s3 << endl;
 }
