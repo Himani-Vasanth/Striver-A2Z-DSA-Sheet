@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int month;
+    cin >> month;
+
+    switch (month) {
+        case 1:
+            cout << "January";
+            break;
+        case 2:
+            cout << "February";
+            break;
+        case 3:
+            cout << "March";
+            break;
+        case 4:
+            cout << "April";
+            break;
+        case 5:
+            cout << "May";
+            break;
+        case 6:
+            cout << "June";
+            break;
+        case 7:
+            cout << "July";
+            break;
+        case 8:
+            cout << "August";
+            break;
+        case 9:
+            cout << "September";
+            break;
+        case 10:
+            cout << "October";
+            break;
+        case 11:
+            cout << "November";
+            break;
+        case 12:
+            cout << "December";
+            break;
+        default:
+            cout << "Invalid month";
+    }
+
+    const int a = 7;
+    const int b = 3;
+
+    switch (a * b) {
+        case 10:
+            cout << "Result is 10";
+            break;
+        case 21:
+            cout << "Result is 21";
+            break;
+        default:
+            cout << "No match";
+    }
+
+    char size;
+    cin >> size;
+
+    switch (size) {
+        case 'S':
+            cout << "Small";
+            break;
+        case 'M':
+            cout << "Medium";
+            break;
+        case 'L':
+            cout << "Large";
+            break;
+        default:
+            cout << "Invalid size";
+    }
+
+    return 0;
+}
