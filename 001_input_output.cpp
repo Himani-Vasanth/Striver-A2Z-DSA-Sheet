@@ -46,9 +46,9 @@ int main() {
     */
 
     char x;
-    std::cout << "\n";
+    cout << "\n";
     cout << "Enter value of char x ";
-    std::cin >> x;
+    cin >> x;    // Taking input from user and store it in variable
     cout << "Val of x is: " << x << "\n";
 
     /*
