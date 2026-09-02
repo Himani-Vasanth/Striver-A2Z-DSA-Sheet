@@ -1,317 +1,73 @@
-```cpp
+#include <iostream>
 #include <bits/stdc++.h>
+/*
+ARRAY:
+- Linear data structure, stores similar (homogeneous) type elements.
+- Elements are in contiguous memory locations (one after another).
+- Random access via index -> O(1) time, since computer knows exact memory location.
+- 0-indexed: simplifies memory computation (address = base + index * size),
+  though it adds an (n-1) subtraction step conceptually. Most languages do this.
+- Fixed size + fixed type, defined at creation time; memory reserved instantly.
+- Cannot store heterogeneous data (no mixing int, string, bool in same array).
 
-int main()
-{
-    /*
-    ARRAY
+Syntax: Data_type array_name [Array_size];
+*/
+int main() {
+    int myArray[8];   // int -> datatype, myArray -> name, [8] -> size (reserved in memory)
 
-    Array is a linear data structure with homogeneous elements/data (same data type)
-    that are stored in contiguous memory locations.
-
-    Index starts from 0, and if n is the total number of elements,
-    then the index is from 0 to n-1.
-
-
-    “Array indexing starts from 0 because the index represents the offset from the
-    array's base memory address. The first element has an offset of 0, so A[0]
-    refers directly to the first element. This also makes memory addressing
-    calculation simple: base + index × element_size.”
-
-    Value       Address       Index
-    10          1000           0
-    20          1004           1
-    30          1008           2
-    40          1012           3
-    50          1016           4
-
-    address = starting_address + (index × size_of_element)
-
-    So for arr[0]:
-
-    1000 + (0 × 4) = 1000
-
-    For arr[2]:
-
-    1000 + (2 × 4) = 1008
-    */
-
+    myArray[0] = 10;
+    myArray[1] = 20;
+    myArray[2] = 30;
+    std::cout << myArray[0] << " " << myArray[1] << " " << myArray[2] << "\n";
+    // Output: 10 20 30
 
     /*
-    CREATING AN ARRAY
+    Finding an element in an array (3 ways):
+    1. Know the index -> direct access via index, O(1).
+    2. Don't know index -> search algorithms (Linear Search, Binary Search).
+    3. Need repeated fast lookups -> store in hash-based structure (hash set/map).
 
-    Syntax: Data_type array_name [Array_size];
-
-    E.g: int myarray [8];
-
-    When you define the size of the array, all of that space in memory is “reserved”.
-
-    Memory is allocated instantly after the array is created.
-
-    The type of elements and the size of the array are fixed and defined when
-    you create it.
+    Summary:
+    - Memory allocated instantly on creation; array is empty until values assigned.
+    - Contiguous elements -> O(1) direct access via index.
+    - Insertion at end -> O(1). Insertion at start/middle -> more complex (shifting).
+    - Removal at known index -> O(1).
     */
 
+    using namespace std;
+    /*
+    STRING:
+    - A string is a sequence of characters, also 0-indexed.
+    - s[0] -> first char, s[1] -> second char, and so on.
+    */
+    string s = "striver";
+    cout << "\n" << s[0] << " " << s[1] << " " << s[2] << "\n";
+    // Output: s t r
+
+    // Finding length of a string:
+    cout << "Length: " << s.size() << "\n";      // or s.length();
+    // Output: Length: 7
 
     /*
-    FINDING AN ELEMENT IN AN ARRAY
-
-    There are three common approaches:
-
-    If the index is known:
-    Directly access the element using arr[index] — O(1).
-
-    If the index is unknown:
-    Use a searching algorithm:
-
-    Linear Search — works on any array, O(n).
-
-    Binary Search — requires a sorted array, O(log n).
-
-    If we need frequent lookups:
-    Use a hash-based structure like unordered_set or unordered_map,
-    which provides O(1) average lookup.
-
-    (Direct access, O(1) = constant time)
+    Passing / Returning / Assigning strings:
+    - Assigning one string to another makes a DEEP COPY (new char sequence),
+      not a reference. Changing the copy won't affect the original.
+    - Passing a string to a function (by value) also copies it;
+      changes inside the function don't affect the original outside.
     */
-
+    string a = "hello";
+    string b = a;      // deep copy, b is independent of a
+    b[0] = 'H';
+    cout << a << " " << b << "\n";
+    // Output: hello Hello   (a unchanged, only b modified)
 
     /*
-    INSERTING ELEMENTS
-
-    Reach to the end of the array and insert the element.
-
-    The insertion at the end of the array takes constant time O(1).
-
-    We can also insert the elements in the middle or the start of the array,
-    but existing elements need to be shifted.
+    String Comparison:
+    ==  Equality operator   -> true if values are equal
+    !=  Inequality operator -> true if values are NOT equal
+    Works for whole strings, and also for comparing individual characters.
     */
-
-
-    /*
-    REMOVING ELEMENTS
-
-    Reach to the index and remove the element.
-
-    Removing an element from the end takes constant time O(1).
-
-    Removing an element from the middle or start requires shifting
-    the remaining elements.
-    */
-
-
-    /*
-    C++ DATA TYPES
-
-    C++ data types tell the compiler what type of value a variable can store
-    and how much memory is required.
-
-
-    1. Fundamental / Built-in Data Types
-
-    Data Type    Typical Size    Stores
-
-    int          4 bytes         Whole numbers
-    float        4 bytes         Decimal numbers
-    double       8 bytes         More precise decimals
-    char         1 byte          Single character
-    bool         1 byte*         true / false
-    void         —               No value
-
-
-    Example:
-
-    int age = 20;
-    float price = 10.5f;
-    double pi = 3.141592;
-    char grade = 'A';
-    bool passed = true;
-
-
-    Type Modifiers
-
-    Type modifiers are keywords that modify fundamental data types:
-
-    short
-    long
-    signed
-    unsigned
-
-
-    Examples:
-
-    short int x;
-    long int y;
-    unsigned int count;
-    long long int population;
-
-
-    2. Derived Data Types
-
-    Created from existing data types:
-
-    Array
-    Pointer
-    Reference
-    Function
-
-
-    int arr[5];       // Array
-    int* ptr;         // Pointer
-    int& ref = x;     // Reference
-
-
-    3. User-Defined Data Types
-
-    Defined by the programmer:
-
-    struct
-    class
-    union
-    enum
-
-
-    struct Student {
-        int age;
-        char grade;
-    };
-
-    enum Color {
-        RED, GREEN, BLUE
-    };
-
-
-    Interview one-liner:
-
-    C++ data types are mainly classified into three types:
-    fundamental, derived, and user-defined types.
-
-    Type modifiers are not a separate type of data type.
-    They modify fundamental data types.
-
-    Sizes are implementation-dependent; the values above are typical on modern systems.
-    */
-
-
-    /*
-    STRINGS
-
-    Strings are like a series of characters stored in a specific order.
-    Each character in a string is assigned an index, starting from 0.
-    */
-
-    string s = "program";
-    cout << s[0];
-
-
-    /*
-    FINDING THE LENGTH OF A STRING
-
-    size() and length() are used to find the number of characters in a string.
-    Both functions work the same way for strings.
-
-    string s = "Hello";
-
-    s.size();      // 5
-    s.length();    // 5
-
-    Time Complexity: O(1)
-    */
-
-
-    /*
-    ACCESSING INDIVIDUAL CHARACTERS
-
-    Individual characters in a string can be accessed using square brackets [].
-    Strings follow 0-based indexing, just like arrays.
-
-    string s = "Hello";
-
-    s[0];    // 'H'
-    */
-
-
-    /*
-    ASSIGNING & PASSING STRINGS
-
-    1. Assigning a String
-
-    string s1 = "Hello";
-    string s2 = s1;
-
-    The value of s1 is copied into s2.
-
-    s1 → "Hello"    // Original
-    s2 → "Hello"    // Copy
-
-    If s2 changes, s1 does not change.
-
-    s2[0] = 'Y';
-
-    s1 → "Hello"
-    s2 → "Yello"
-
-
-    2. Passing a String to a Function
-
-    void change(string s) {
-        s[0] = 'Y';
-    }
-
-    string name = "Hello";
-
-    change(name);
-
-    A copy of name is passed to the function.
-
-    name → "Hello"    // Original
-    s    → "Hello"    // Copy
-
-    Inside the function:
-
-    s[0] = 'Y';
-
-    s → "Yello"       // Copy changes
-    name → "Hello"    // Original does not change
-
-    After the function ends:
-
-    cout << name;     // Hello
-
-    The original remains unchanged because only the copy was changed.
-    */
-
-
-    /*
-    STRING COMPARISON
-
-    == (Equality Operator)
-
-    Checks whether two strings have the same value.
-
-    string s1 = "Hello";
-    string s2 = "Hello";
-
-    s1 == s2        // true
-
-
-    != (Inequality Operator)
-
-    Checks whether two strings have different values.
-
-    string s1 = "Hello";
-    string s2 = "World";
-
-    s1 != s2        // true
-
-
-    We can also compare individual characters using their index.
-
-    string s1 = "Hello";
-    string s2 = "Help";
-
-    s1[0] == s2[0]        // true  ('H' == 'H')
-    s1[3] == s2[3]        // false ('l' != 'p')
-    */
+    string x = "cat", y = "cat", z = "dog";
+    cout << (x == y) << " " << (x != z) << " " << (x[0] == y[0]) << "\n";
+    // Output: 1 1 1   (true is printed as 1 in C++)
 }
-```
