@@ -1,22 +1,27 @@
-Striver A2Z DSA Sheet
+# Striver A2Z DSA Sheet
 
-My solutions and notes for Striver's A2Z DSA Sheet, covering Data Structures and Algorithms from basics to advanced concepts.
+Solutions and notes for **Striver's A2Z DSA Sheet**, covering Data Structures and Algorithms from fundamental concepts to advanced problem-solving techniques.
 
-Contents
+## Contents
 
-- Theory and concepts
-- Problem-solving patterns
-- Questions and solutions
-- Important notes and approaches
+* DSA theory and concepts
+* Problem-solving patterns
+* Questions and solutions
+* Important notes and approaches
+* Practice and revision
 
-Goal
+## Goal
 
-To understand DSA concepts and problem-solving patterns through consistent practice, rather than simply memorizing solutions.
+The goal of this repository is to build a strong understanding of **Data Structures and Algorithms** through consistent problem-solving and revision, rather than simply memorizing solutions.
 
-Theory → Patterns → Practice → Revision
+**Theory → Patterns → Practice → Revision**
 
-Source
+## Progress
 
-Based on Striver's A2Z DSA Sheet.
+This repository is being updated as I work through the A2Z DSA Sheet.
 
-This repository is created for learning and practice.
+## Source
+
+Based on **Striver's A2Z DSA Sheet**.
+
+This repository is created for **learning and practice purposes**.
