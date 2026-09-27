@@ -35,30 +35,396 @@ and system. Use sizeof() to check the actual size.
 ============================================================
 */
 
-
 /*
 ============================================================
-                    FUNCTION PROTOTYPES
+                        FUNCTIONS
 ============================================================
 
-A FUNCTION DECLARATION / PROTOTYPE tells the compiler about
-a function BEFORE it is called.
+A FUNCTION is a block of code that performs a specific task.
 
-Syntax:
+Benefits:
+1. Code reusability
+2. Reduces repetition
+3. Makes programs easier to understand
+4. Makes debugging and maintenance easier
 
-    returnType functionName(parameters);
+------------------------------------------------------------
+FUNCTION STRUCTURE
+------------------------------------------------------------
 
-The actual function definitions are written AFTER main().
-============================================================
-*/
+returnType functionName(parameters)
+{
+    // function body
+}
 
-int add(int a, int b);
-int multiply(int a, int b);
-void greet();
+Example:
 
+int add(int a, int b)
+{
+    return a + b;
+}
+
+Parts:
+
+returnType  -> type of value returned by function
+functionName -> name used to call the function
+parameters  -> input values received by function
+function body -> statements executed by function
+return      -> sends a value back to the caller
+
+------------------------------------------------------------
+FUNCTION DEFINITION
+------------------------------------------------------------
+
+A function definition contains the actual implementation
+of the function.
+
+Example:
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+The code inside { } is executed when the function is called.
+
+------------------------------------------------------------
+FUNCTION CALL
+------------------------------------------------------------
+
+A FUNCTION CALL executes the function.
+
+Example:
+
+int result = add(5, 3);
+
+Here:
+5 and 3 -> arguments
+add()   -> function being called
+result  -> stores returned value
+
+Flow:
+
+add(5, 3)
+    ↓
+a = 5, b = 3
+    ↓
+a + b
+    ↓
+8 returned to caller
+
+------------------------------------------------------------
+PARAMETERS vs ARGUMENTS
+------------------------------------------------------------
+
+PARAMETERS:
+Variables written in the function definition.
+
+Example:
+
+int add(int a, int b)
+           ↑     ↑
+       parameters
+
+ARGUMENTS:
+Actual values passed when calling the function.
+
+Example:
+
+add(5, 3);
+    ↑  ↑
+ arguments
+
+------------------------------------------------------------
+RETURN TYPE
+------------------------------------------------------------
+
+The return type specifies the type of value a function
+returns to the caller.
+
+Examples:
+
+int getNumber()
+{
+    return 10;
+}
+
+double getValue()
+{
+    return 5.5;
+}
+
+char getGrade()
+{
+    return 'A';
+}
+
+------------------------------------------------------------
+VOID FUNCTIONS
+------------------------------------------------------------
+
+void means the function does not return a value.
+
+Example:
+
+void greet()
+{
+    cout << "Hello";
+}
+
+Call:
+
+greet();
+
+A void function can use 'return;' to exit early,
+but cannot return a value.
+
+------------------------------------------------------------
+FUNCTIONS WITH PARAMETERS
+------------------------------------------------------------
+
+Functions can receive input through parameters.
+
+Example:
+
+int square(int n)
+{
+    return n * n;
+}
+
+Call:
+
+square(5);
+
+Returns:
+
+25
+
+------------------------------------------------------------
+FUNCTIONS WITH NO PARAMETERS
+------------------------------------------------------------
+
+A function may not require any input.
+
+Example:
+
+void greet()
+{
+    cout << "Hello";
+}
+
+Call:
+
+greet();
+
+------------------------------------------------------------
+FUNCTION RETURN
+------------------------------------------------------------
+
+The return statement:
+
+1. Sends a value back to the caller
+2. Immediately terminates the function
+
+Example:
+
+int add(int a, int b)
+{
+    return a + b;
+
+    // code here will NOT execute
+}
+
+------------------------------------------------------------
+LOCAL VARIABLES
+------------------------------------------------------------
+
+Variables declared inside a function are LOCAL variables.
+
+Example:
+
+void test()
+{
+    int x = 10;
+}
+
+'x' can only be accessed inside test().
+
+Local variables are created when the function is called
+and normally destroyed when the function finishes.
+
+------------------------------------------------------------
+SCOPE OF FUNCTION PARAMETERS
+------------------------------------------------------------
+
+Function parameters are local to that function.
+
+Example:
+
+void display(int x)
+{
+    cout << x;
+}
+
+'x' cannot be directly accessed outside display().
+
+------------------------------------------------------------
+PASSING VALUES TO FUNCTIONS
+------------------------------------------------------------
+
+C++ commonly passes arguments by VALUE.
+
+Example:
+
+void change(int x)
+{
+    x = 100;
+}
+
+int a = 10;
+change(a);
+
+The original 'a' remains 10 because x is a copy of a.
+
+------------------------------------------------------------
+PASS BY REFERENCE
+------------------------------------------------------------
+
+Using '&' allows a function to work with the original
+variable instead of a copy.
+
+Example:
+
+void change(int &x)
+{
+    x = 100;
+}
+
+int a = 10;
+change(a);
+
+Now:
+
+a = 100
+
+------------------------------------------------------------
+FUNCTION OVERLOADING
+------------------------------------------------------------
+
+Function overloading allows multiple functions to have
+the same name with different parameter lists.
+
+Example:
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int add(int a, int b, int c)
+{
+    return a + b + c;
+}
+
+The compiler chooses the appropriate function based on
+the number/type of arguments.
+
+IMPORTANT:
+Changing ONLY the return type is NOT enough for overloading.
+
+------------------------------------------------------------
+DEFAULT ARGUMENTS
+------------------------------------------------------------
+
+A parameter can have a default value.
+
+Example:
+
+int add(int a, int b = 10)
+{
+    return a + b;
+}
+
+Calls:
+
+add(5);       // 5 + 10 = 15
+add(5, 20);   // 5 + 20 = 25
+
+Default arguments are used when an argument is not provided.
+
+------------------------------------------------------------
+RECURSION
+------------------------------------------------------------
+
+RECURSION occurs when a function calls itself.
+
+Example:
+
+int factorial(int n)
+{
+    if (n == 0)
+        return 1;
+
+    return n * factorial(n - 1);
+}
+
+factorial(5)
+= 5 × 4 × 3 × 2 × 1
+= 120
+
+A recursive function needs:
+
+1. BASE CASE -> stops recursion
+2. RECURSIVE CASE -> calls the function again
+
+------------------------------------------------------------
+INLINE FUNCTIONS
+------------------------------------------------------------
+
+An inline function is a request to the compiler to expand
+the function code at the place where it is called.
+
+Example:
+
+inline int square(int x)
+{
+    return x * x;
+}
+
+Modern compilers may ignore the inline request if necessary.
+
+------------------------------------------------------------
+MAIN FUNCTION
+------------------------------------------------------------
+
+main() is the entry point of a C++ program.
+
+Example:
 
 int main()
 {
+    // program execution starts here
+    return 0;
+}
+
+return 0 indicates successful termination of the program.
+
+------------------------------------------------------------
+IMPORTANT POINTS
+------------------------------------------------------------
+
+1. A function is used to perform a specific task.
+2. Parameters receive input from the caller.
+3. Arguments are the actual values passed.
+4. return sends a value back and exits the function.
+5. void means no value is returned.
+6. Variables declared inside a function are local to it.
+7. Pass by value works on a copy.
+8. Pass by reference can modify the original variable.
+9. Functions can be overloaded using different parameter lists.
+10. Recursion means a function calls itself.
+============================================================
+*/
     /*
     ========================================================
                     1. PRIMITIVE TYPES
