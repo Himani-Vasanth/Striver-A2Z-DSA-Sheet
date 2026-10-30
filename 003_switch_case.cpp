@@ -73,6 +73,8 @@ int main() {
     // n = 4 -> Output: 4
     //                  4 or fell through from 4   (fall-through in action)
 
+/*A switch jumps to the matching case, then executes everything below it until it encounters a break or reaches the end. */
+
     /*
     COMMON PITFALLS:
     1. Forgetting 'break' unintentionally -> unwanted fall-through into next case.
